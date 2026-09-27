@@ -3,13 +3,32 @@ import { Link } from 'react-router-dom'
 import { instance, ENDPOINTS } from './api'
 
 function statusForPaper(paper) {
-  if (paper.status === 'completed') return ['Completed', 'status-complete']
-  if (paper.days_left === null) return ['No deadline', 'status-neutral']
-  if (paper.days_left < 0) return ['Deadline passed', 'status-danger']
+  if (paper.status === 'completed') {
+    return ['Completed', 'status-complete']
+  }
+
+  if (paper.days_left === null || paper.days_left === undefined) {
+    return ['No deadline', 'status-neutral']
+  }
+
+  if (paper.days_left < 0) {
+    return ['Deadline passed', 'status-danger']
+  }
+
   const remaining = 100 - paper.progress
-  if (paper.days_left <= 14 && remaining >= 35) return ['Need to hurry', 'status-danger']
-  if (paper.days_left >= 45 && remaining >= 25) return ['Work thoroughly', 'status-careful']
-  return ['Work normally', 'status-normal']
+
+  // Deadline is close and a lot of work remains
+  if (paper.days_left <= 14 && remaining >= 35) {
+    return ['Priority Work', 'status-danger']
+  }
+
+  // Plenty of time remains, so focus on thorough research
+  if (paper.days_left >= 45 && remaining >= 25) {
+    return ['Deep Work', 'status-careful']
+  }
+
+  // Progress is reasonable for the available time
+  return ['On Track', 'status-normal']
 }
 
 export default function Dashboard() {
