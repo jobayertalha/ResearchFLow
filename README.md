@@ -2,8 +2,7 @@
 
 **A research-focused task manager for organizing multiple papers, tracking progress, and managing academic deadlines.**
 
-🔗 **[Live Demo](https://research-f-low.vercel.app/)** · [GitHub Repository](https://github.com/jobayertalha/ResearchFLow)
-
+🔗 **[Live Demo](https://research-f-low.vercel.app/)** 
 ResearchFlow helps researchers manage multiple research papers in one place, organize paper-specific tasks, monitor progress, and stay aware of upcoming conferences and deadlines.
 
 ## 🚀 Features
